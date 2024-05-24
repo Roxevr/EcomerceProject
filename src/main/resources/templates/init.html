@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link th:href="@{cssPropio/archivo.css}" rel="stylesheet" />
+	<title>ECOMERSE BIENVENIDA</title>
+</head>
+
+<body class="bg-black">
+	<div class="container">
+		<!-- BARRA NAVEGACION-->
+		<nav class="navbar navbar-expand-lg bg-body-tertiary">
+			<div class="container-fluid">
+				<a class="navbar-brand" href="#">Navbar</a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+					aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarNav">
+					<ul class="navbar-nav">
+						<li class="nav-item">
+							<a class="nav-link" href="#">Home</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#">Ultimas novedades</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="container-fluid">
+				<form class="d-flex" role="search">
+					<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+					<button class="btn btn-outline-success" type="submit">Search</button>
+				</form>
+			</div>
+			<div class="container-fluid">
+				<form class="d-flex" role="search">
+					<label class="form-control me-2" placeholder="Log in" aria-label="Log in" />
+					<button class="btn" type="submit">Login</button>
+				</form>
+			</div>
+		</nav>
+		<!-- CONTENIDO PAGINA PRINCIPAL-->
+		<table id="productos">
+			<tbody>
+				<tr>
+						<td th:each="producto: ${productos}">	
+							</div>
+							<figure class="b">
+								<img src="">
+								<figcaption> <span th:text="${producto.nombre}"></span> </figcaption>
+								<figcaption> <span th:text="${producto.precio}"></span> </figcaption>
+							</figure>
+						</td>
+				</tr>
+			</tbody>
+		</table>
+		<div class="nav-footer-line"></div>
+	</div>
+	
+</body>
+
+</html>
