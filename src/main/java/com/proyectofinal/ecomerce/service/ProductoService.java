@@ -1,8 +1,12 @@
 package com.proyectofinal.ecomerce.service;
 
-import org.springframework.stereotype.Service;
+import java.util.List;
+import java.util.Optional;
 
-@Service
-public class ProductoService {
+import com.proyectofinal.ecomerce.model.Producto;
 
+public interface ProductoService {
+	List<Producto> finAll();
+	
+	Optional<Producto> finOne(int id);
 }

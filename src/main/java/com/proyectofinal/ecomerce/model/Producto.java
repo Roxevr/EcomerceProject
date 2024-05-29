@@ -1,7 +1,10 @@
 package com.proyectofinal.ecomerce.model;
 
+import com.proyectofinal.ecomerce.model.enums.Categoria;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 
@@ -9,7 +12,7 @@ import jakarta.persistence.ManyToOne;
 public class Producto {
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
 	private String nombre;
@@ -19,7 +22,7 @@ public class Producto {
 	private Categoria categoria;
 
 	@ManyToOne
-	private Pedido pedido;
+	private Carrito pedido;
 
 	public Producto() {
 	}
@@ -82,11 +85,11 @@ public class Producto {
 		this.categoria = categoria;
 	}
 
-	public Pedido getPedido() {
+	public Carrito getPedido() {
 		return pedido;
 	}
 
-	public void setPedido(Pedido pedido) {
+	public void setPedido(Carrito pedido) {
 		this.pedido = pedido;
 	}
 

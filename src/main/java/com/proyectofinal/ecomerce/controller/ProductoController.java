@@ -5,14 +5,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.proyectofinal.ecomerce.repository.ProductoRepositoryImpl;
+import com.proyectofinal.ecomerce.dao.ProductoDaoImpl;
 
 @Controller
 @RequestMapping(value = "")
 public class ProductoController {
 
 	@Autowired
-	private ProductoRepositoryImpl productoRepositoryImpl;
+	private ProductoDaoImpl productoRepositoryImpl;
 
 	@GetMapping(value = "/productos")
 	public String show() {
