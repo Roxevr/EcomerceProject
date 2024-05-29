@@ -1,21 +1,34 @@
 package com.proyectofinal.ecomerce.controller;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import com.proyectofinal.ecomerce.dao.ProductoDaoImpl;
+import com.proyectofinal.ecomerce.model.Producto;
+import com.proyectofinal.ecomerce.service.ProductoService;
 
-@Controller
-@RequestMapping(value = "")
+@RestController
 public class ProductoController {
 
 	@Autowired
-	private ProductoDaoImpl productoRepositoryImpl;
+	private ProductoService productoService;
 
-	@GetMapping(value = "/productos")
-	public String show() {
-		return "init";
+	@GetMapping(value = "/productos", produces = MediaType.APPLICATION_JSON_VALUE)
+	public List<Producto> getProductos() {
+		return productoService.findAll();
 	}
+	
+	@GetMapping(value = "/productos/{id}")
+	public Optional<Producto> getProducto(@PathVariable int id) {
+		return productoService.findOne(id);
+	}
+	
+	
+	
 }

@@ -6,7 +6,8 @@ import java.util.Optional;
 import com.proyectofinal.ecomerce.model.Producto;
 
 public interface ProductoService {
-	List<Producto> finAll();
+	List<Producto> findAll();
 	
-	Optional<Producto> finOne(int id);
+	Optional<Producto> findOne(int id);
+
 }
