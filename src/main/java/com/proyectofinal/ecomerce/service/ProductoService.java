@@ -8,6 +8,6 @@ import com.proyectofinal.ecomerce.model.Producto;
 public interface ProductoService {
 	List<Producto> findAll();
 	
-	Optional<Producto> findOne(int id);
+	Producto findOne(int id);
 
 }

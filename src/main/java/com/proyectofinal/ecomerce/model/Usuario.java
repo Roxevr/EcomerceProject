@@ -13,7 +13,13 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
+@Getter
+@Setter
+@ToString
 @Entity
 public class Usuario {
     @Id
@@ -21,6 +27,7 @@ public class Usuario {
     private Long idUsuario;
     
     private String nombre;
+    private Tipo tipo;
     
     @OneToOne(cascade = CascadeType.ALL)
     private Carrito carrito;

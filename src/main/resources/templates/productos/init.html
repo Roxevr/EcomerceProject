@@ -45,15 +45,25 @@
 		<!-- CONTENIDO PAGINA PRINCIPAL-->
 		<table id="productos">
 			<tbody>
+				<th:block th:each="producto , iteracion : ${productos}">
+					<th:block th:if="${iteracion.index % 2 == 0}">
+						<tr>
+					</th:block>
+						<td>
+							<a th:href="@{/productos/{id} (id=${producto.idProducto})}">
+								<figure class="b">
+									<img th:src="${producto.imagen}" alt="Description of the image" width="100px"
+										height="100px">
+									<figcaption> <span th:text="${producto.nombre}"></span> </figcaption>
+									<figcaption> <span th:text="${producto.precio}"></span><span>€</span> </figcaption>
+								</figure>
+							</a>
+						</td>
+					<th:block th:if="${iteracion.index % 2 == 1}">
+						</tr>
+					</th:block>
+				</th:block>
 				<td>
-					<tr th:each="producto: ${productos}">
-
-						<figure class="b">
-							<img th:src="@{producto.imagen}">
-							<figcaption> <span th:text="${producto.nombre}"></span> </figcaption>
-							<figcaption> <span th:text="${producto.precio}"></span><span>€</span> </figcaption>
-						</figure>
-					</tr>
 				</td>
 			</tbody>
 		</table>

@@ -11,7 +11,12 @@
 <body>
 	<div class="container">
 
-
+		Id producto: <span th:text="${producto.idProducto}"></span><br>
+		Nombre: <span th:text="${producto.nombre}"></span><br>
+		Precio: <span th:text="${producto.precio}"></span><br>
+		Imagen: <img th:src="${producto.imagen}" width="20px" height="20px"><br>
+		Descripcion: <span th:text="${producto.descripcion}"></span><br>
+		Categoria: <span th:text="${producto.categoria}"></span><br>
 	</div>
 </body>
 

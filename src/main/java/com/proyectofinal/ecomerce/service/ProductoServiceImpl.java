@@ -21,8 +21,8 @@ public class ProductoServiceImpl implements ProductoService {
 	}
 
 	@Override
-	public Optional<Producto> findOne(int id) {
-		return productoDao.findById(id);
+	public Producto findOne(int id) {
+		return productoDao.findById(id).orElse(null);
 	}
 
 }
