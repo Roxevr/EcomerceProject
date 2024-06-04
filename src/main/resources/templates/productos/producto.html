@@ -17,6 +17,8 @@
 		Imagen: <img th:src="${producto.imagen}" width="20px" height="20px"><br>
 		Descripcion: <span th:text="${producto.descripcion}"></span><br>
 		Categoria: <span th:text="${producto.categoria}"></span><br>
+		
+		<a href="@{/producto.idProducto} + ${/carrito}"><button>Añadir al carrito</button></a>
 	</div>
 </body>
 

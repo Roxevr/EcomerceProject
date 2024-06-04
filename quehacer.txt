@@ -1,0 +1,5 @@
+creame una aplicacion spring boot java web como esta
+Una aplicacion la cual puedes acceder sin necesiadad de log in. Si no te has loggeado, puedes añadir uno o mas producto al carrito,
+para poder comprar, tienes que logearte, si no te logeas no podras hacerlo. Un producto tiene un codigo de producto unico ademas de su clave
+primaria de la base de datos, necesitamos saber cuantos productos con ese codigo de producto hay en toda la tienda. Una vez pagado el carrito, se crea
+un pedido para ese usuario, si no hay usuario no hay pedido.
