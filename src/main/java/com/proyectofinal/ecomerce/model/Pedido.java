@@ -4,38 +4,34 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+
+import lombok.Data;
 
 import java.time.LocalDate;
 import java.util.*;
 
-@NoArgsConstructor
-@Getter
-@Setter
-@ToString
+@Data
 @Entity
 public class Pedido {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idPedido;
     
+    private LocalDate fecha;
+    
     @ManyToOne
     private Usuario usuario;
-    
-    @OneToMany
-    private List<Producto> productos ;
-    
-    private LocalDate fecha;
 
-    public Pedido(Usuario usuario) {
-        this.usuario = usuario;
-        this.fecha = LocalDate.now();
-    }
+    @ManyToMany
+    @JoinTable(
+        name = "pedido_productos",
+        joinColumns = @JoinColumn(name = "pedido_id"),
+        inverseJoinColumns = @JoinColumn(name = "producto_id")
+    )
+    private Set<Producto> productos = new HashSet<>();
     
 }

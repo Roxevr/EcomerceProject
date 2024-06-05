@@ -1,40 +1,32 @@
 package com.proyectofinal.ecomerce.model;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import com.proyectofinal.ecomerce.model.enums.Tipo;
 
-import jakarta.persistence.CascadeType;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
+import lombok.Data;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
-
-@NoArgsConstructor
-@Getter
-@Setter
-@ToString
+@Data
 @Entity
 public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idUsuario;
     
-    private String nombre;
     private Tipo tipo;
     
-    @OneToOne(cascade = CascadeType.ALL)
-    private Carrito carrito;
-    
-    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
-    private List<Pedido> pedidos = new ArrayList<Pedido>();
+    private String nombre;
+    private String email;
+    private String password;
+
+    @OneToMany(mappedBy = "usuario")
+    private Set<Pedido> pedidos = new HashSet<>();
 }
 

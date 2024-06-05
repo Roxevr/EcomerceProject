@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.proyectofinal.ecomerce.model.Usuario;
 
 
-public interface UsuarioDao  extends JpaRepository<Usuario, Integer>{
-	
+public interface UsuarioDao  extends JpaRepository<Usuario, Long>{
+	Usuario findByEmail(String email);
 }
 

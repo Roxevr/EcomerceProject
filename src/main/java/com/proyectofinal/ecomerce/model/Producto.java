@@ -2,6 +2,7 @@ package com.proyectofinal.ecomerce.model;
 
 import com.proyectofinal.ecomerce.model.enums.Categoria;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -23,6 +24,9 @@ public class Producto {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idProducto;
+	
+	@Column(unique = true)
+    private String codigo;
 
 	private String nombre;
 	private double precio;

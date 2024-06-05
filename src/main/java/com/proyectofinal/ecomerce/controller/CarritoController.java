@@ -2,21 +2,40 @@ package com.proyectofinal.ecomerce.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.proyectofinal.ecomerce.model.Carrito;
+import com.proyectofinal.ecomerce.model.Producto;
 import com.proyectofinal.ecomerce.model.Usuario;
 import com.proyectofinal.ecomerce.service.CarritoService;
+import com.proyectofinal.ecomerce.service.ProductoService;
+import com.proyectofinal.ecomerce.service.UsuarioService;
 
 @Controller
+@RequestMapping("/carrito")
 public class CarritoController {
 	
 	@Autowired
-	private CarritoService carritoService;
-	
-	@GetMapping(value = "/carrito")
-	public String carrito(Model model, Usuario usuario) {
-		model.addAttribute("carrito", carritoService.getCarrito(usuario));
-		return "carritos/carrito";
-	}
+    private CarritoService carritoService;
+
+    @Autowired
+    private ProductoService productoService;
+
+    @Autowired
+    private UsuarioService usuarioService;
+
+    @PostMapping("/agregar")
+    public Carrito agregarProductoAlCarrito(@RequestParam String email, @RequestParam String codigoProducto) {
+        Usuario usuario = usuarioService.obtenerUsuarioPorEmail(email);
+        Producto producto = productoService.obtenerProductoPorCodigo(codigoProducto);
+        Carrito carrito = carritoService.obtenerCarritoPorUsuario(usuario);
+        if (carrito == null) {
+            carrito = new Carrito();
+            carrito.setUsuario(usuario);
+        }
+        carrito.getProductos().add(producto);
+        return carritoService.guardarCarrito(carrito);
+    }
 }

@@ -5,14 +5,9 @@ import com.proyectofinal.ecomerce.model.Producto;
 import com.proyectofinal.ecomerce.model.Usuario;
 
 public interface CarritoService{
+
+	Carrito obtenerCarritoPorUsuario(Usuario usuario);
+
+	Carrito guardarCarrito(Carrito carrito);
 	
-	Carrito getCarrito(Usuario usuario);
-	
-	void getAllItems();
-	
-	void addItem(Producto producto);
-	
-	void deleteItem(Producto producto);
-	
-	void deleteAllItems();
 }
