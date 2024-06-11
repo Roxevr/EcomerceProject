@@ -35,10 +35,6 @@ public class Producto {
 	@Enumerated(EnumType.STRING)
 	private Categoria categoria;
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "productos_carrito")
-	private Carrito carrito;
-
 
 	public Producto(String nombre, double precio, String imagen, String descripcion,
 			Categoria categoria) {

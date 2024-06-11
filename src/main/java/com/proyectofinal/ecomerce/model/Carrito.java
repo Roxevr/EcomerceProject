@@ -12,11 +12,11 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 
 @NoArgsConstructor
 @Data
@@ -34,13 +34,9 @@ public class Carrito {
 	private LocalDate fechaEntrega;
 
 	@OneToOne
-    private Usuario usuario;
+	private Usuario usuario;
 
-    @ManyToMany
-    @JoinTable(
-        name = "carrito_productos",
-        joinColumns = @JoinColumn(name = "carrito_id"),
-        inverseJoinColumns = @JoinColumn(name = "producto_id")
-    )
-    private Set<Producto> productos = new HashSet<>();
+	@OneToMany
+	@JoinColumn(name = "producto_id")
+	private Set<Producto> productos = new HashSet<>();
 }

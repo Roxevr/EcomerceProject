@@ -3,12 +3,14 @@
 
 <head>
 	<meta charset="UTF-8">
-	<link href="css/bootstrap.min.css" rel="stylesheet">
-	<link th:href="@{cssPropio/archivo.css}" rel="stylesheet" />
+	<link href="/css/bootstrap.min.css" rel="stylesheet">
+<!--	<link th:href="@{/cssPropio/archivo.css}" rel="stylesheet" /> -->
 	<title>ECOMERSE BIENVENIDA</title>
 </head>
 
 <body>
+	
+	<!-- incluir la misma nav bar que en principal -->
 	<div class="container">
 
 		Id producto: <span th:text="${producto.idProducto}"></span><br>
@@ -18,7 +20,10 @@
 		Descripcion: <span th:text="${producto.descripcion}"></span><br>
 		Categoria: <span th:text="${producto.categoria}"></span><br>
 		
-		<a href="@{/producto.idProducto} + ${/carrito}"><button>Añadir al carrito</button></a>
+		<a th:href="@{/producto.idProducto} + @{/carrito}"><button>Añadir al carrito</button></a>
+		
+	<!-- REVISAR -->	<a th:href="@{/productos}"><button th:text="Volver"/></a> 
+		
 	</div>
 </body>
 

@@ -1,15 +1,16 @@
 package com.proyectofinal.ecomerce.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.proyectofinal.ecomerce.model.Producto;
 
 public interface ProductoService {
 
-	Producto guardarProducto(Producto producto);
+	public Producto save(Producto producto);
 
-	Producto obtenerProductoPorCodigo(String codigo);
+	public Optional<Producto> findByCodigo(String codigo);
 
-	List<Producto> obtenerTodosLosProductos();
+	public List<Producto> findAll();
 
 }

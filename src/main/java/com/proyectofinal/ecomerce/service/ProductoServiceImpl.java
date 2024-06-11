@@ -1,6 +1,7 @@
 package com.proyectofinal.ecomerce.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,17 +16,17 @@ public class ProductoServiceImpl implements ProductoService {
 	private ProductoDao productoDao;
 	
 	@Override
-	public Producto guardarProducto(Producto producto) {
+	public Producto save(Producto producto) {
         return productoDao.save(producto);
     }
 
 	@Override
-    public Producto obtenerProductoPorCodigo(String codigo) {
+    public Optional<Producto> findByCodigo(String codigo) {
         return productoDao.findByCodigo(codigo);
     }
 
 	@Override
-    public List<Producto> obtenerTodosLosProductos() {
+    public List<Producto> findAll() {
         return productoDao.findAll();
     }
 

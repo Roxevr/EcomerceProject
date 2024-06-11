@@ -1,5 +1,7 @@
 package com.proyectofinal.ecomerce.controller;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,13 +31,13 @@ public class CarritoController {
     @PostMapping("/agregar")
     public Carrito agregarProductoAlCarrito(@RequestParam String email, @RequestParam String codigoProducto) {
         Usuario usuario = usuarioService.obtenerUsuarioPorEmail(email);
-        Producto producto = productoService.obtenerProductoPorCodigo(codigoProducto);
+        Optional<Producto> producto = productoService.findByCodigo(codigoProducto);
         Carrito carrito = carritoService.obtenerCarritoPorUsuario(usuario);
         if (carrito == null) {
             carrito = new Carrito();
             carrito.setUsuario(usuario);
         }
-        carrito.getProductos().add(producto);
+        carrito.getProductos().add(producto.get());
         return carritoService.guardarCarrito(carrito);
     }
 }
