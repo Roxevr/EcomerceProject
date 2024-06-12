@@ -15,10 +15,11 @@ import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
+import lombok.Data;
 
-
+@Data
 @Entity
-@Table(name = "carritos")
+@Table(name = "carrito")
 public class Carrito {
 
 	@Id
@@ -51,44 +52,5 @@ public class Carrito {
 		this.usuario = usuario;
 	}
 
-	public Long getIdCarrito() {
-		return idCarrito;
-	}
-
-	public void setIdCarrito(Long idCarrito) {
-		this.idCarrito = idCarrito;
-	}
-
-	public LocalDate getFechaSalida() {
-		return fechaSalida;
-	}
-
-	public void setFechaSalida(LocalDate fechaSalida) {
-		this.fechaSalida = fechaSalida;
-	}
-
-	public LocalDate getFechaEntrega() {
-		return fechaEntrega;
-	}
-
-	public void setFechaEntrega(LocalDate fechaEntrega) {
-		this.fechaEntrega = fechaEntrega;
-	}
-
-	public Usuario getUsuario() {
-		return usuario;
-	}
-
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-	}
-
-	public Set<Producto> getProductos() {
-		return productos;
-	}
-
-	public void setProductos(Set<Producto> productos) {
-		this.productos = productos;
-	}
 
 }

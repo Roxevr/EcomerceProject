@@ -10,9 +10,11 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.Data;
 
+@Data
 @Entity
-@Table(name = "productos")
+@Table(name = "producto")
 public class Producto {
 
 	@Id
@@ -31,9 +33,8 @@ public class Producto {
 	private Categoria categoria;
 
 	public Producto() {
-
 	}
-
+	
 	public Producto(Long idProducto, String codigo, String cantidad, String nombre, double precio, String imagen,
 			String descripcion, Categoria categoria) {
 		super();
@@ -47,68 +48,5 @@ public class Producto {
 		this.categoria = categoria;
 	}
 
-	public Long getIdProducto() {
-		return idProducto;
-	}
-
-	public void setIdProducto(Long idProducto) {
-		this.idProducto = idProducto;
-	}
-
-	public String getCodigo() {
-		return codigo;
-	}
-
-	public void setCodigo(String codigo) {
-		this.codigo = codigo;
-	}
-
-	public String getNombre() {
-		return nombre;
-	}
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
-	public double getPrecio() {
-		return precio;
-	}
-
-	public void setPrecio(double precio) {
-		this.precio = precio;
-	}
-
-	public String getImagen() {
-		return imagen;
-	}
-
-	public void setImagen(String imagen) {
-		this.imagen = imagen;
-	}
-
-	public String getDescripcion() {
-		return descripcion;
-	}
-
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
-	}
-
-	public Categoria getCategoria() {
-		return categoria;
-	}
-
-	public void setCategoria(Categoria categoria) {
-		this.categoria = categoria;
-	}
-
-	public String getCantidad() {
-		return cantidad;
-	}
-
-	public void setCantidad(String cantidad) {
-		this.cantidad = cantidad;
-	}
 
 }

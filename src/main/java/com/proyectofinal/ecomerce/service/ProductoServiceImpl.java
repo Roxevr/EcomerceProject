@@ -26,8 +26,11 @@ public class ProductoServiceImpl implements ProductoService {
     }
 
 	@Override
-    public List<Producto> findAll() {
-        return productoDao.findAll();
+    public List<Producto> findAll(String filter) {
+		if(filter == null || filter.isBlank()  ) {
+			return productoDao.findAll();
+		}
+        return productoDao.findAll().stream().filter(p -> p.getNombre().toUpperCase().contains(filter.toUpperCase())).toList();
     }
 
 }

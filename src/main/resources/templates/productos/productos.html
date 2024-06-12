@@ -25,10 +25,11 @@
 		        </ul>
 
 		        <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
-		          <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
+		          <input  type="search" class="form-control" id="searchLabel" placeholder="Search..." aria-label="Search">
+				  <button onclick="search()" id="buttonSearch" >Search</button>
 		        </form>
 
-		        <div class="dropdown text-end">
+		        <!--<div class="dropdown text-end">
 		          <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
 		            <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
 		          </a>
@@ -39,7 +40,7 @@
 		            <li><hr class="dropdown-divider"></li>
 		            <li><a class="dropdown-item" href="#">Sign out</a></li>
 		          </ul>
-		        </div>
+		        </div> -->
 		      </div>
 		    </div>
 		
@@ -52,7 +53,7 @@
 					</th:block>
 					
 					<td style="min-width: 230px; width: 50%">
-						<a th:href="@{/productos/{codigo}(codigo=${producto.codigo})}">
+						<a th:href="@{/productos/producto?cod={codigo}(codigo=${producto.codigo})}">
 							<figure class="b">
 								<div><img th:src="${producto.imagen}" alt="Description of the image" width="100px"
 										height="100px"></div>
@@ -72,7 +73,8 @@
 		</table>
 		<div class="nav-footer-line"></div>
 	</div>
-	<script src="js/bootstrap.min.js"/>
+	<script src="/jsPropio/script.js"/>
+	<script src="/js/bootstrap.min.js"/>
 </body>
 
 </html>

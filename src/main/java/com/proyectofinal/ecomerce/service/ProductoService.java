@@ -7,10 +7,10 @@ import com.proyectofinal.ecomerce.model.Producto;
 
 public interface ProductoService {
 
-	public Producto save(Producto producto);
+	Producto save(Producto producto);
 
-	public Optional<Producto> findByCodigo(String codigo);
+	Optional<Producto> findByCodigo(String codigo);
 
-	public List<Producto> findAll();
+	List<Producto> findAll(String filter);
 
 }
