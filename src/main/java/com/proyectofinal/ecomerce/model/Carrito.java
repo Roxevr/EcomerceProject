@@ -26,12 +26,6 @@ public class Carrito {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idCarrito;
 
-	@Temporal(value = TemporalType.DATE)
-	private LocalDate fechaSalida;
-
-	@Temporal(value = TemporalType.DATE)
-	private LocalDate fechaEntrega;
-
 	@OneToOne
 	@JoinColumn(name = "usuario_id")
 	private Usuario usuario;
@@ -43,14 +37,6 @@ public class Carrito {
 	}
 	
 	public Carrito (Usuario usuario) {
-		this.usuario = usuario;
-	}
-
-	public Carrito(Long idCarrito, LocalDate fechaSalida, LocalDate fechaEntrega, Usuario usuario) {
-		super();
-		this.idCarrito = idCarrito;
-		this.fechaSalida = fechaSalida;
-		this.fechaEntrega = fechaEntrega;
 		this.usuario = usuario;
 	}
 	

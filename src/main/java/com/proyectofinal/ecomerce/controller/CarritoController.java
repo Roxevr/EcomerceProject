@@ -49,7 +49,8 @@ public class CarritoController {
     public String agregarProductoAlCarrito(@RequestParam(name = "email", required = false) String email,
     		@RequestParam(name = "codigoProducto", required = true) String codigoProducto) {
     	
-        Usuario usuario = usuarioService.obtenerUsuarioPorEmail(email);
+        //Usuario usuario = usuarioService.obtenerUsuarioPorEmail(email);
+        Usuario usuario = usuarioService.obtenerUsuarioPorId(1L);
         Producto producto = productoService.findByCodigo(codigoProducto);
         Carrito carrito = carritoService.obtenerCarritoPorUsuario(usuario);
         

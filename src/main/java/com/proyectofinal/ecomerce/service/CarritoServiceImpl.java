@@ -1,5 +1,8 @@
 package com.proyectofinal.ecomerce.service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,10 +34,14 @@ public class CarritoServiceImpl implements CarritoService {
 		if(carrito.getUsuario() != null) {
 			for (Producto producto : carrito.getProductos()) {
 				productoService.update(producto, 1);
+			};
+			if(carritoDao.findById(carrito.getIdCarrito()).isPresent()) {
+				carritoDao.findById(carrito.getIdCarrito()).stream().findFirst().orElse(null).setProductos(carrito.getProductos());
+			}else {
+				carritoDao.save(carrito);
 			}
-			carritoDao.save(carrito);
 		}
-        
+		
     }
 
 }

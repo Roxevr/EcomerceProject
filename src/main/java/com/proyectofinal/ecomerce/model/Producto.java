@@ -31,6 +31,7 @@ public class Producto {
 	private String descripcion;
 	@Enumerated(EnumType.STRING)
 	private Categoria categoria;
+	
 
 	public Producto() {
 	}
