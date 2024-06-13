@@ -23,7 +23,7 @@ public class Producto {
 
 	@Column(name = "codigo", length = 10, nullable = false, unique = true)
 	private String codigo;
-	private String cantidad;
+	private int cantidad;
 
 	private String nombre;
 	private double precio;
@@ -35,7 +35,7 @@ public class Producto {
 	public Producto() {
 	}
 	
-	public Producto(Long idProducto, String codigo, String cantidad, String nombre, double precio, String imagen,
+	public Producto(Long idProducto, String codigo, int cantidad, String nombre, double precio, String imagen,
 			String descripcion, Categoria categoria) {
 		super();
 		this.idProducto = idProducto;

@@ -38,10 +38,12 @@ public class Carrito {
 
 	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
 	private Set<Producto> productos = new HashSet<>();
-	
-	
 
 	public Carrito() {
+	}
+	
+	public Carrito (Usuario usuario) {
+		this.usuario = usuario;
 	}
 
 	public Carrito(Long idCarrito, LocalDate fechaSalida, LocalDate fechaEntrega, Usuario usuario) {
@@ -50,6 +52,13 @@ public class Carrito {
 		this.fechaSalida = fechaSalida;
 		this.fechaEntrega = fechaEntrega;
 		this.usuario = usuario;
+	}
+	
+	public void agregarProducto(Producto producto) {
+		if(producto != null) {
+			productos.add(producto);
+		}
+		
 	}
 
 

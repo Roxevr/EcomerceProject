@@ -12,19 +12,26 @@ import org.springframework.web.bind.annotation.RestController;
 import com.proyectofinal.ecomerce.model.Usuario;
 import com.proyectofinal.ecomerce.service.UsuarioService;
 
-@RestController()
-@RequestMapping(value = "usuario/")
+@Controller()
+@RequestMapping("/usuario")
 public class UsuarioController {
 	@Autowired
     private UsuarioService usuarioService;
-
-    @PostMapping
-    public Usuario crearUsuario(@RequestBody Usuario usuario) {
-        return usuarioService.guardarUsuario(usuario);
+	
+	@GetMapping("/form")
+    public String crearUsuarioForm(@RequestBody Usuario usuario) {
+    	return "";
+    }
+	
+    @PostMapping("/form")
+    public String crearUsuario(@RequestBody Usuario usuario) {
+    	usuarioService.guardarUsuario(usuario);
+    	return "";
     }
 
     @GetMapping("/{email}")
-    public Usuario obtenerUsuarioPorEmail(@PathVariable String email) {
-        return usuarioService.obtenerUsuarioPorEmail(email);
+    public String obtenerUsuarioPorEmail(@PathVariable String email) {
+    	usuarioService.obtenerUsuarioPorEmail(email);
+        return "";
     }
 }

@@ -8,6 +8,6 @@ public interface CarritoService{
 
 	Carrito obtenerCarritoPorUsuario(Usuario usuario);
 
-	Carrito guardarCarrito(Carrito carrito);
+	void guardarCarrito(Carrito carrito);
 	
 }

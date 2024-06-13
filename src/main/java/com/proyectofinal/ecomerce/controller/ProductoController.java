@@ -32,15 +32,16 @@ public class ProductoController {
     
     @GetMapping("producto")
     public String getProductoPorCodigoView(Model model, @RequestParam(name = "cod", required = true) String codigo) {
-    	Optional<Producto> prod = productoService.findByCodigo(codigo);
-    	System.out.println(prod.get().toString());
-    	model.addAttribute("producto", prod.get());
+    	Producto prod = productoService.findByCodigo(codigo);
+    	System.out.println(prod.toString());
+    	model.addAttribute("producto", prod);
         return "productos/producto";
     }
     
     @PostMapping
-    public Producto save(@RequestBody Producto producto) {
-        return productoService.save(producto);
+    public String save(@RequestBody Producto producto) {
+    	productoService.save(producto);
+    	return "";
     }
     
 

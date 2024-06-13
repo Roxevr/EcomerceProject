@@ -6,11 +6,21 @@ import java.util.Optional;
 import com.proyectofinal.ecomerce.model.Producto;
 
 public interface ProductoService {
-
-	Producto save(Producto producto);
-
-	Optional<Producto> findByCodigo(String codigo);
-
+	
 	List<Producto> findAll(String filter);
+
+	Producto findById(Long id);
+	
+	Producto findByCodigo(String codigo);
+
+	void save(Producto producto);
+	
+	void update(Producto producto, int eliminarStock);
+
+	
+
+	
+
+	
 
 }

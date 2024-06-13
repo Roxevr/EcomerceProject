@@ -3,33 +3,38 @@
 
 <head>
 	<meta charset="UTF-8">
-	<link href="/css/bootstrap.min.css" rel="stylesheet">
-	<link th:href="@{/cssPropio/archivo.css}" rel="stylesheet" />
+	<link th:href="@{/styles/css/bootstrap.min.css}" rel="stylesheet">
+	<link th:href="@{/styles/cssPropio/archivo.css}" rel="stylesheet">
 	<title>ECOMERSE BIENVENIDA</title>
+	
+	
+	
 </head>
 
 <body>
 	<div class="container">
 		<!-- NAV PRINCIPAL-->
 		<div class="container">
-		      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-		        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 link-body-emphasis text-decoration-none">
-		          <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
-		        </a>
+			<div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+				<a href="/" class="d-flex align-items-center mb-2 mb-lg-0 link-body-emphasis text-decoration-none">
+					<svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
+						<use xlink:href="#bootstrap"></use>
+					</svg>
+				</a>
 
-		        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-		          <li><a href="#" class="nav-link px-2 link-secondary">Overview</a></li>
-		          <li><a href="#" class="nav-link px-2 link-body-emphasis">Inventory</a></li>
-		          <li><a href="#" class="nav-link px-2 link-body-emphasis">Customers</a></li>
-		          <li><a href="#" class="nav-link px-2 link-body-emphasis">Products</a></li>
-		        </ul>
+				<ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+					<li><a href="#" class="nav-link px-2 link-secondary">Overview</a></li>
+					<li><a th:href="@{/carrito}" class="nav-link px-2 link-body-emphasis">Carrito</a></li>
+					<li><a href="#" class="nav-link px-2 link-body-emphasis">Customers</a></li>
+					<li><a href="#" class="nav-link px-2 link-body-emphasis">Products</a></li>
+				</ul>
 
-		        <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
-		          <input  type="search" class="form-control" id="searchLabel" placeholder="Search..." aria-label="Search">
-				  <button onclick="search()" id="buttonSearch" >Search</button>
-		        </form>
+				
+				<input type="search" class="form-control" id="searchlabel" placeholder="Search..." aria-label="Search">
+				<button id="searchbutton" onclick="filtrar()">Search</button>
 
-		        <!--<div class="dropdown text-end">
+
+				<div class="dropdown text-end">
 		          <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
 		            <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
 		          </a>
@@ -40,10 +45,10 @@
 		            <li><hr class="dropdown-divider"></li>
 		            <li><a class="dropdown-item" href="#">Sign out</a></li>
 		          </ul>
-		        </div> -->
-		      </div>
-		    </div>
-		
+		        </div> 
+			</div>
+		</div>
+
 		<!-- CONTENIDO PAGINA PRINCIPAL-->
 		<table id="productos" class="table table-sm" style="width: 100%;">
 			<tbody>
@@ -51,7 +56,7 @@
 					<th:block th:if="${iteracion.index % 2 == 0}">
 						<tr>
 					</th:block>
-					
+
 					<td style="min-width: 230px; width: 50%">
 						<a th:href="@{/productos/producto?cod={codigo}(codigo=${producto.codigo})}">
 							<figure class="b">
@@ -62,19 +67,17 @@
 							</figure>
 						</a>
 					</td>
-					
-					<th:block th:if="${iteracion.index % 2 == 1}">
+
+					<th:block th:if="${iteracion.index % 2 == 1 } ">
 						</tr>
 					</th:block>
 				</th:block>
-				<td>
-				</td>
 			</tbody>
 		</table>
 		<div class="nav-footer-line"></div>
 	</div>
-	<script src="/jsPropio/script.js"/>
-	<script src="/js/bootstrap.min.js"/>
+	<script type="text/javascript" th:src="@{/mijs/script.js}"></script>
+	<script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
 </body>
 
 </html>
