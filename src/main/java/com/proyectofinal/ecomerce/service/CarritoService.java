@@ -9,5 +9,7 @@ public interface CarritoService{
 	Carrito obtenerCarritoPorUsuario(Usuario usuario);
 
 	void guardarCarrito(Carrito carrito);
+
+	// void deleteProductoCarrito(Producto producto);
 	
 }

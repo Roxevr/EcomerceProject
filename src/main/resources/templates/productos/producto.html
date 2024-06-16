@@ -4,29 +4,45 @@
 <head>
 	<meta charset="UTF-8">
 	<link href="/styles/css/bootstrap.min.css" rel="stylesheet">
-	<!--	<link th:href="@{/cssPropio/archivo.css}" rel="stylesheet" /> -->
 	<title>ECOMERSE BIENVENIDA</title>
 </head>
 
 <body>
-
-	<!-- incluir la misma nav bar que en principal -->
 	<div class="container">
+		<!-- NAV PRINCIPAL-->
+		<header th:replace="~{common/header::breadcrumbfragment}" />
 
-		Id producto: <span th:text="${producto.codigo}"></span><br>
-		Nombre: <span th:text="${producto.nombre}"></span><br>
-		Precio: <span th:text="${producto.precio}"></span><br>
-		Imagen: <img th:src="${producto.imagen}" width="20px" height="20px"><br>
-		Descripcion: <span th:text="${producto.descripcion}"></span><br>
-		Categoria: <span th:text="${producto.categoria}"></span><br>
-
-		<form th:action="@{/carrito/agregar?codigoProducto={cod} (cod = ${producto.codigo})}" method="post">
-			<button type="submit">Cerrar</button>
-		</form>
-
-		<!-- REVISAR --> <a th:href="@{/productos}"><button th:text="Volver" /></a>
-
+		<div class="container my-5">
+			<div class="card">
+				<div class="card-header">
+					Detalles del Producto
+				</div>
+				<div class="card-body">
+					<div class="row">
+						<div class="col-md-4 text-center">
+							<img th:src="${producto.imagen}" class="img-fluid">
+						</div>
+						<div class="col-md-8">
+							<h5 class="card-title">Id producto: <span th:text="${producto.codigo}"></span></h5>
+							<p class="card-text">Nombre: <span th:text="${producto.nombre}"></span></p>
+							<p class="card-text">Precio: <span th:text="${producto.precio}"></span>€</p>
+							<p class="card-text">Descripción: <span th:text="${producto.descripcion}"></span></p>
+							<p class="card-text">Categoría: <span th:text="${producto.categoria}"></span></p>
+							<div class="d-flex">
+								<form th:action="@{/carrito/agregar?codigoProducto={cod} (cod = ${producto.codigo})}"
+									method="post" class="me-2">
+									<button type="submit" class="btn btn-primary">Añadir al carrito</button>
+								</form>
+								<a th:href="@{/productos}" class="btn btn-secondary">Volver</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
+
+	<script src="/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

@@ -27,7 +27,20 @@ public class CarritoServiceImpl implements CarritoService {
     public Carrito obtenerCarritoPorUsuario(Usuario usuario) {
         return carritoDao.findByUsuario(usuario).orElse(null);
     }
+
+	@Override
+	public void guardarCarrito(Carrito carrito) {
+		carritoDao.save(carrito);
+	}
 	
+	/*
+	@Override
+	public void deleteProductoCarrito(Producto producto) {
+		carritoDao.deleteProducto(producto);
+	}
+	*/
+	
+	/* 
 	@Override
 	@Transactional
     public void guardarCarrito(Carrito carrito) {
@@ -43,5 +56,6 @@ public class CarritoServiceImpl implements CarritoService {
 		}
 		
     }
+    */
 
 }

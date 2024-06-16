@@ -1,11 +1,11 @@
 package com.proyectofinal.ecomerce.model;
 
 import java.time.LocalDate;
-import java.util.HashSet;
 import java.util.Set;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -19,7 +19,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "carrito")
+@Table(name = "carritos")
 public class Carrito {
 
 	@Id
@@ -30,22 +30,30 @@ public class Carrito {
 	@JoinColumn(name = "usuario_id")
 	private Usuario usuario;
 
-	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-	private Set<Producto> productos = new HashSet<>();
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+	@JoinColumn(name = "carrito_id")
+	private Set<ItemCarrito> itemsCarrito;
 
 	public Carrito() {
 	}
-	
-	public Carrito (Usuario usuario) {
+
+	public Carrito(Usuario usuario) {
 		this.usuario = usuario;
 	}
-	
-	public void agregarProducto(Producto producto) {
-		if(producto != null) {
-			productos.add(producto);
+
+	public Double calcularTotal() {
+		double total = 0;
+
+		for (ItemCarrito item : itemsCarrito) {
+			total += item.calcularPrecio();
 		}
-		
+
+		return total;
 	}
 
+	public void agregarProducto(ItemCarrito item) {
+		itemsCarrito.add(item);
+
+	}
 
 }

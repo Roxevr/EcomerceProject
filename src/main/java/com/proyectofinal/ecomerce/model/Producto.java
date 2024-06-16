@@ -14,7 +14,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "producto")
+@Table(name = "productos")
 public class Producto {
 
 	@Id
@@ -23,10 +23,10 @@ public class Producto {
 
 	@Column(name = "codigo", length = 10, nullable = false, unique = true)
 	private String codigo;
-	private int cantidad;
+	private Integer cantidad;
 
 	private String nombre;
-	private double precio;
+	private Double precio;
 	private String imagen;
 	private String descripcion;
 	@Enumerated(EnumType.STRING)

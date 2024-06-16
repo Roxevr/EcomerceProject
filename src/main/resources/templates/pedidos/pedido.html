@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<link th:href="@{/styles/css/bootstrap.min.css}" rel="stylesheet">
+	<link th:href="@{/styles/cssPropio/archivo.css}" rel="stylesheet" />
+	<title>Pedido</title>
+</head>
+
+<body>
+	<div class="container">
+		<!-- NAV PRINCIPAL-->
+		<header th:replace="~{common/header::breadcrumbfragment}" />
+
+		<!-- CONTENIDO PRINCIPAL -->
+		<div>
+			<th:block th:if="${#lists.isEmpty(pedidos)}">
+				<h1 class="text-center">NO HAY PEDIDOS AUN</h1>
+			</th:block>
+			<div th:if="${!#lists.isEmpty(pedidos)}" class="table-responsive">
+				<table class="table table-striped table-sm">
+					<thead>
+						<tr>
+							<th scope="col">Nombre</th>
+							<th scope="col">Código</th>
+							<th scope="col">Cantidad</th>
+							<th scope="col">Precio</th>
+							<th scope="col">Imagen</th>
+						</tr>
+					</thead>
+					<tbody>
+						<th:block th:each="pedido : ${pedidos}">
+								<td th:text="${pedido.id}"></td>
+								<td th:text="${pedido.calcularPrecioTotal()}"></td>
+								<td><a><button>Eliminar del pedido</button></a></td>
+
+						</th:block>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+
+</html>
