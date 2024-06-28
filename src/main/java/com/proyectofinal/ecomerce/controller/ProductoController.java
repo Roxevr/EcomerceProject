@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.proyectofinal.ecomerce.model.Producto;
-import com.proyectofinal.ecomerce.service.ProductoService;
+import com.proyectofinal.ecomerce.model.Product;
+import com.proyectofinal.ecomerce.model.service.ProductoService;
 
 @Controller
 @RequestMapping({"/productos", "/"})
@@ -32,14 +32,14 @@ public class ProductoController {
     
     @GetMapping("producto")
     public String getProductoPorCodigoView(Model model, @RequestParam(name = "cod", required = true) String codigo) {
-    	Producto prod = productoService.findByCodigo(codigo);
+    	Product prod = productoService.findByCodigo(codigo);
     	System.out.println(prod.toString());
     	model.addAttribute("producto", prod);
         return "productos/producto";
     }
     
     @PostMapping
-    public String save(@RequestBody Producto producto) {
+    public String save(@RequestBody Product producto) {
     	productoService.save(producto);
     	return "";
     }

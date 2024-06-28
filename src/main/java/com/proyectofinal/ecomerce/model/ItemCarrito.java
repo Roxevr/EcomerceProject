@@ -22,20 +22,20 @@ public class ItemCarrito {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	private Integer cantidad;
+	private Integer amount;
 	
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinColumn(name = "producto_id")
-	private Producto producto;
+	@JoinColumn(name = "product_id")
+	private Product product;
 	
 	
-	public ItemCarrito(Producto producto, Integer cantidad) {
-		this.cantidad = cantidad;
-		this.producto = producto;
+	public ItemCarrito(Product product, Integer amount) {
+		this.amount = amount;
+		this.product = product;
 	}
 	
 	public Double calcularPrecio() {
-		return producto.getPrecio() * cantidad;
+		return product.getPrize() * amount;
 	}
 }
 

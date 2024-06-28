@@ -24,11 +24,11 @@ public class Carrito {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long idCarrito;
+	private Long id;
 
 	@OneToOne
-	@JoinColumn(name = "usuario_id")
-	private Usuario usuario;
+	@JoinColumn(name = "user_id")
+	private User user;
 
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
 	@JoinColumn(name = "carrito_id")
@@ -37,8 +37,8 @@ public class Carrito {
 	public Carrito() {
 	}
 
-	public Carrito(Usuario usuario) {
-		this.usuario = usuario;
+	public Carrito(User user) {
+		this.user = user;
 	}
 
 	public Double calcularTotal() {

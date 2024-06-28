@@ -1,0 +1,51 @@
+Descripción de las Clases
+
+Producto:
+
+id: Identificador único del producto.
+nombre: Nombre del producto.
+precio: Precio del producto.
+
+Cliente:
+
+id: Identificador único del cliente.
+nombre: Nombre del cliente.
+carrito: Carrito asociado al cliente.
+pedidos: Lista de pedidos realizados por el cliente.
+
+Carrito:
+
+id: Identificador único del carrito.
+items: Lista de objetos ItemCarrito que representan los productos y sus cantidades en el carrito.
+agregarProducto(producto, cantidad): Método para agregar un producto al carrito.
+
+ItemCarrito:
+
+id: Identificador único del item en el carrito.
+carrito: Carrito al que pertenece el item.
+producto: Producto agregado al carrito.
+cantidad: Cantidad de dicho producto.
+
+Pedido:
+
+id: Identificador único del pedido.
+cliente: Cliente que realizó el pedido.
+items: Lista de objetos ItemPedido que representan los productos y sus cantidades en el pedido.
+fecha: Fecha en que se realizó el pedido.
+
+ItemPedido:
+
+id: Identificador único del item en el pedido.
+pedido: Pedido al que pertenece el item.
+producto: Producto agregado al pedido.
+cantidad: Cantidad de dicho producto.
+
+Relaciones:
+
+Cliente tiene una relación uno a uno con Carrito.
+Cliente tiene una relación uno a muchos con Pedido.
+Carrito tiene una relación uno a muchos con ItemCarrito.
+ItemCarrito tiene una relación muchos a uno con Carrito y Producto.
+Pedido tiene una relación muchos a uno con Cliente.
+Pedido tiene una relación uno a muchos con ItemPedido.
+ItemPedido tiene una relación muchos a uno con Pedido y Producto.

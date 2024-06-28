@@ -3,7 +3,7 @@ package com.proyectofinal.ecomerce.model;
 import java.time.LocalDate;
 import java.util.Set;
 
-import com.proyectofinal.ecomerce.model.enums.Estado;
+import com.proyectofinal.ecomerce.model.util.Status;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -31,13 +31,13 @@ public class Pedido {
 	@Temporal(TemporalType.DATE)
 	private LocalDate fechaCreacion;
 
-	private Double precio;
+	private Double prize;
 
-	private Estado estado = Estado.EN_ENTREGA;
+	private Status estado = Status.EN_ENTREGA;
 
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinColumn(name = "usuario_id")
-	private Usuario usuario;
+	@JoinColumn(name = "user_id")
+	private User user;
 
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
 	@JoinColumn(name = "pedido_id")
@@ -52,14 +52,14 @@ public class Pedido {
 	 * Si el estado esta finalizado devuelve true, sino false
 	 */
 	public boolean isEntregado() {
-		return estado == Estado.FINALIZADO;
+		return estado == Status.FINALIZADO;
 	}
 
 	public Double calcularPrecioTotal() {
 		double total = 0;
 
 		for (ItemPedido item : itemsPedido) {
-			total += item.getPrecio();
+			total += item.getPrize();
 		}
 		return total;
 	}

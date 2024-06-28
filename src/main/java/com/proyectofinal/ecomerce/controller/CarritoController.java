@@ -11,11 +11,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.proyectofinal.ecomerce.model.Carrito;
 import com.proyectofinal.ecomerce.model.ItemCarrito;
-import com.proyectofinal.ecomerce.model.Producto;
-import com.proyectofinal.ecomerce.model.Usuario;
-import com.proyectofinal.ecomerce.service.CarritoService;
-import com.proyectofinal.ecomerce.service.ProductoService;
-import com.proyectofinal.ecomerce.service.UsuarioService;
+import com.proyectofinal.ecomerce.model.Product;
+import com.proyectofinal.ecomerce.model.User;
+import com.proyectofinal.ecomerce.model.service.CarritoService;
+import com.proyectofinal.ecomerce.model.service.ProductoService;
+import com.proyectofinal.ecomerce.model.service.UsuarioService;
 
 @Controller
 @RequestMapping("/carrito")
@@ -33,7 +33,7 @@ public class CarritoController {
 	@GetMapping("")
 	public String getCarrito(Model model, @RequestParam(name = "email", required = false) String email) {
 		// Usuario usuario = usuarioService.obtenerUsuarioPorEmail(email);
-		Usuario usuario = usuarioService.obtenerUsuarioPorId(1L);
+		User usuario = usuarioService.obtenerUsuarioPorId(1L);
 		Carrito carrito = carritoService.obtenerCarritoPorUsuario(usuario);
 
 		if (usuario != null) {
@@ -51,8 +51,8 @@ public class CarritoController {
 			@RequestParam(name = "codigoProducto", required = true) String codigoProducto) {
 
 		// Usuario usuario = usuarioService.obtenerUsuarioPorEmail(email);
-		Usuario usuario = usuarioService.obtenerUsuarioPorId(1L);
-		Producto producto = productoService.findByCodigo(codigoProducto);
+		User usuario = usuarioService.obtenerUsuarioPorId(1L);
+		Product producto = productoService.findByCodigo(codigoProducto);
 		Carrito carrito = carritoService.obtenerCarritoPorUsuario(usuario);
 
 		if (usuario != null) {

@@ -1,0 +1,9 @@
+figure.b {
+	
+	border: 1px solid black;
+}
+
+figure-div{
+	display: flex;
+	justify-content: center;
+}

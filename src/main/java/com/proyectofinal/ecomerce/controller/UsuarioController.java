@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.proyectofinal.ecomerce.model.Usuario;
-import com.proyectofinal.ecomerce.service.UsuarioService;
+import com.proyectofinal.ecomerce.model.User;
+import com.proyectofinal.ecomerce.model.service.UsuarioService;
 
 @Controller()
 @RequestMapping("/usuario")
@@ -19,12 +19,12 @@ public class UsuarioController {
     private UsuarioService usuarioService;
 	
 	@GetMapping("/form")
-    public String crearUsuarioForm(@RequestBody Usuario usuario) {
+    public String crearUsuarioForm(@RequestBody User usuario) {
     	return "";
     }
 	
     @PostMapping("/form")
-    public String crearUsuario(@RequestBody Usuario usuario) {
+    public String crearUsuario(@RequestBody User usuario) {
     	usuarioService.guardarUsuario(usuario);
     	return "";
     }

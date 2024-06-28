@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<link th:href="@{/styles/css/bootstrap.min.css}" rel="stylesheet">
+	<link th:href="@{/styles/cssPropio/archivo.css}" rel="stylesheet" />
+	<title>Carrito</title>
+</head>
+
+<body>
+	<div class="container">
+		<!-- NAV PRINCIPAL-->
+		<header th:replace="~{common/header::breadcrumbfragment}" />
+
+		<!-- CONTENIDO PRINCIPAL -->
+		<div>
+			<th:block th:if="${#lists.isEmpty(carrito.itemsCarrito)}">
+				<h1 class="text-center">THERE ARE NO ITEMS IN THE BAG YET</h1>
+			</th:block>
+			<h1>Precio Total: <span th:text="${carrito.calcularTotal()}" /></h1>
+			<div th:if="${!#lists.isEmpty(carrito.itemsCarrito)}" class="table-responsive">
+				<table class="table table-striped table-sm">
+					<thead>
+						<tr>
+							<th scope="col">Nombre</th>
+							<th scope="col">Código</th>
+							<th scope="col">Cantidad</th>
+							<th scope="col">Precio</th>
+							<th scope="col">Imagen</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="item : ${carrito.itemsCarrito}">
+
+							<td th:text="${item.producto.nombre}"></td>
+							<td th:text="${item.producto.codigo}"></td>
+							<td th:text="${item.cantidad}"></td>
+							<td th:text="${item.calcularPrecio()}"></td>
+							<td><img th:src="${item.producto.imagen}" class="img-thumbnail"
+									style="width: 50px; height: 50px;" alt="Imagen del producto"></td>
+							<!--<td><a th:href="@{/pedidos/eliminar/?cod={codigo}(codigo=${item.producto.codigo}}" ><button>Eliminar del carrito</button></a></td> -->
+							<td><a><button>Eliminar del carrito</button></a></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<form th:action="@{/pedidos/agregar}" method="post">
+				<button>REALIZAR PEDIDO</button>
+			</form>
+		
+		</div>
+	</div>
+	<script type="text/javascript" th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+
+</html>

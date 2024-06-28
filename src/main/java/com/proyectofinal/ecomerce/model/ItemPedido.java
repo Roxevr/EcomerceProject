@@ -22,22 +22,22 @@ public class ItemPedido {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	private Integer cantidad;
+	private Integer amount;
 
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinColumn(name = "producto_id")
-	private Producto producto;
+	@JoinColumn(name = "product_id")
+	private Product product;
 
-	private Double precio;
+	private Double prize;
 
-	public ItemPedido(Integer cantidad, Producto producto) {
-		this.cantidad = cantidad;
-		this.producto = producto;
-		this.precio = calcularPrecio();
+	public ItemPedido(Integer amount, Product product) {
+		this.amount = amount;
+		this.product = product;
+		this.prize = calcularPrecio();
 	}
 	
 	private Double calcularPrecio() {
-		return cantidad * producto.getPrecio();
+		return amount * product.getPrize();
 	}
 
 

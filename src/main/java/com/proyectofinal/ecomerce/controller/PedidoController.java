@@ -17,12 +17,12 @@ import com.proyectofinal.ecomerce.model.Carrito;
 import com.proyectofinal.ecomerce.model.ItemCarrito;
 import com.proyectofinal.ecomerce.model.ItemPedido;
 import com.proyectofinal.ecomerce.model.Pedido;
-import com.proyectofinal.ecomerce.model.Producto;
-import com.proyectofinal.ecomerce.model.Usuario;
-import com.proyectofinal.ecomerce.service.CarritoService;
-import com.proyectofinal.ecomerce.service.PedidoService;
-import com.proyectofinal.ecomerce.service.ProductoService;
-import com.proyectofinal.ecomerce.service.UsuarioService;
+import com.proyectofinal.ecomerce.model.Product;
+import com.proyectofinal.ecomerce.model.User;
+import com.proyectofinal.ecomerce.model.service.CarritoService;
+import com.proyectofinal.ecomerce.model.service.PedidoService;
+import com.proyectofinal.ecomerce.model.service.ProductoService;
+import com.proyectofinal.ecomerce.model.service.UsuarioService;
 
 @Controller
 @RequestMapping("/pedidos")
@@ -44,7 +44,7 @@ public class PedidoController {
     public String getPedidos(Model model,
     		@RequestParam(name = "email", required = false) String email) {
     	//Usuario usuario = usuarioService.obtenerUsuarioPorEmail(email);
-    	Usuario usuario = usuarioService.obtenerUsuarioPorId(1L);
+    	User usuario = usuarioService.obtenerUsuarioPorId(1L);
     	List<Pedido> pedidos =  pedidoService.obtenerPedidosPorUsuario(usuario);
     	
     	
@@ -58,17 +58,17 @@ public class PedidoController {
     		@RequestParam(name = "carrito", required = false) Carrito carrito) {
     	
         //Usuario usuario = usuarioService.obtenerUsuarioPorEmail(email);
-        Usuario usuario = usuarioService.obtenerUsuarioPorId(1L); 
-        carrito = carritoService.obtenerCarritoPorUsuario(usuario);
+        User user = usuarioService.obtenerUsuarioPorId(1L); 
+        carrito = carritoService.obtenerCarritoPorUsuario(user);
         
         Set<ItemCarrito> items = carrito.getItemsCarrito();
         Pedido pedido = new Pedido();
         
-        pedido.setUsuario(usuario);
+        pedido.setUser(user);
         pedido.setFechaCreacion(LocalDate.now());
         
         for (ItemCarrito itemCarrito : items) {
-			pedido.addItem(new ItemPedido(itemCarrito.getCantidad(), itemCarrito.getProducto()));
+			pedido.addItem(new ItemPedido(itemCarrito.getAmount(), itemCarrito.getProduct()));
 		}
         pedidoService.guardarPedido(pedido);
        
